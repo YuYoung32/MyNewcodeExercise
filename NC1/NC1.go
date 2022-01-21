@@ -31,22 +31,26 @@ func solve(s string, t string) string {
 		sb, tb = tb, sb
 		sbl, tbl = tbl, sbl
 	}
+	// 倒序遍历
 	i := sbl - 1
 	j := tbl - 1
+	// 进位与本位
 	jin := 0
 	ben := 0
 	for i >= 0 {
+		// 短的没有循环完，否则让短的为0
 		if j >= 0 {
 			ben = (int(sb[i]-'0') + int(tb[j]-'0') + jin) % 10
 			jin = (int(sb[i]-'0') + int(tb[j]-'0') + jin) / 10
 		} else {
-			ben = (int(sb[i]-'0') + jin) % 10
-			jin = (int(sb[i]-'0') + jin) / 10
+			ben = (int(sb[i]-'0') + 0 + jin) % 10
+			jin = (int(sb[i]-'0') + 0 + jin) / 10
 		}
 		sb[i] = byte(ben) + '0'
 		i--
 		j--
 	}
+	// 溢出位的判断
 	if jin > 0 {
 		return "1" + string(sb)
 	}
