@@ -1,5 +1,6 @@
 package MyTools
 
+//Compare2DArray 比较二维数组，忽略在二维上的顺序
 func Compare2DArray(a1 [][]int, a2 [][]int) bool {
 	compare1DArray := func(a1, a2 []int) bool {
 		if len(a1) != len(a2) {
@@ -32,6 +33,32 @@ func Compare2DArray(a1 [][]int, a2 [][]int) bool {
 	}
 	for _, f := range flags {
 		if f == false {
+			return false
+		}
+	}
+	return true
+}
+
+//StrictCompare2DArray 比较二维数组，同时注意在二维上的顺序
+func StrictCompare2DArray(a1 [][]int, a2 [][]int) bool {
+	compare1DArray := func(a1, a2 []int) bool {
+		if len(a1) != len(a2) {
+			return false
+		}
+		for i := 0; i < len(a1); i++ {
+			if a1[i] != a2[i] {
+				return false
+			}
+		}
+		return true
+	}
+
+	if len(a1) != len(a2) {
+		return false
+	}
+
+	for i := 0; i < len(a1); i++ {
+		if compare1DArray(a1[i], a2[i]) == false {
 			return false
 		}
 	}
