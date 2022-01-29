@@ -1,14 +1,12 @@
 package NC5
 
+import "MyNewcodeExercise/MyTools"
+
 /**
 二叉树求路径值之和，DLR遍历二叉树
 */
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+type TreeNode = MyTools.TreeNode
 
 func DLR(root *TreeNode, pathNum int, total *int) {
 	pathNum = pathNum*10 + root.Val

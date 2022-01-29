@@ -1,10 +1,8 @@
 package NC9
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import "MyNewcodeExercise/MyTools"
+
+type TreeNode = MyTools.TreeNode
 
 var flag = false
 

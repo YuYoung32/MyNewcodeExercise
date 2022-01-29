@@ -1,10 +1,8 @@
 package NC6
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import "MyNewcodeExercise/MyTools"
+
+type TreeNode = MyTools.TreeNode
 
 var total = -1000
 

@@ -1,10 +1,8 @@
 package NC12
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import "MyNewcodeExercise/MyTools"
+
+type TreeNode = MyTools.TreeNode
 
 func index(slice []int, elem int) int {
 	for i, i2 := range slice {

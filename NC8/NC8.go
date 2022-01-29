@@ -1,5 +1,7 @@
 package NC8
 
+import "MyNewcodeExercise/MyTools"
+
 /**
 切记，使用切片时，append是针对指针进行操作，已经append另一个切片后，不要再改变这个切片，否则会同步改变
 例子
@@ -9,11 +11,7 @@ append(b,a) // b为{{1}}
 append(a,2) // b为{{1,2}}
 */
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+type TreeNode = MyTools.TreeNode
 
 var totalPath [][]int
 

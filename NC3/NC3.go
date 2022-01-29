@@ -1,5 +1,7 @@
 package NC3
 
+import "MyNewcodeExercise/MyTools"
+
 /**
 链表中环的入口结点
 推导过程：
@@ -19,10 +21,7 @@ slow一次走1，fast一次走2。
 
 */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+type ListNode = MyTools.ListNode
 
 func EntryNodeOfLoop(pHead *ListNode) *ListNode {
 	fast := pHead

@@ -1,52 +1,24 @@
 package NC5
 
-import "testing"
-
-func generateTree(string2 string) *TreeNode {
-	// 将数字字符串转化为数字数组，再转化成节点数组
-
-	nodes := []byte(string2)
-	var tree []*TreeNode
-	// 空占首节点。方便后续链接
-	tree = append(tree, &TreeNode{
-		Val:   0,
-		Left:  nil,
-		Right: nil,
-	})
-	for _, char := range nodes {
-		node := &TreeNode{
-			Val:   int(char - '0'),
-			Left:  nil,
-			Right: nil,
-		}
-		tree = append(tree, node)
-	}
-	length := len(tree)
-	for i := 1; i < length; i++ {
-		if 2*i < length {
-			tree[i].Left = tree[2*i]
-		}
-		if 2*i+1 < length {
-			tree[i].Right = tree[2*i+1]
-		}
-	}
-	return tree[1]
-}
+import (
+	"MyNewcodeExercise/MyTools"
+	"testing"
+)
 
 func Test_DLR(t *testing.T) {
 	cases := []struct {
 		Name     string
-		Nodes    string
+		Nodes    []string
 		Expected int
 	}{
-		{"normal", "123", 25},
-		{"long", "12034", 257},
-		{"broaden", "10", 10},
-		{"empty", "0", 0},
+		{"normal", []string{"1", "2", "3"}, 25},
+		{"long", []string{"1", "2", "0", "3", "4"}, 257},
+		{"broaden", []string{"1", "0"}, 10},
+		{"empty", []string{"0"}, 0},
 	}
 	for _, c := range cases {
 		t.Run(c.Name, func(t *testing.T) {
-			result := sumNumbers(generateTree(c.Nodes))
+			result := sumNumbers(MyTools.GenerateTreeFromString(c.Nodes))
 			if result != c.Expected {
 				t.Fatalf("expected %v, but %v got", c.Expected, result)
 			}

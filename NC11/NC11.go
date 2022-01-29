@@ -1,10 +1,10 @@
 package NC11
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import (
+	"MyNewcodeExercise/MyTools"
+)
+
+type TreeNode = MyTools.TreeNode
 
 func generate(root *TreeNode, nodes []int) {
 	mid := len(nodes) / 2

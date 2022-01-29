@@ -1,13 +1,12 @@
 package NC4
 
+import "MyNewcodeExercise/MyTools"
+
 /**
 判断链表是否有环
 */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+type ListNode = MyTools.ListNode
 
 func hasCycle(head *ListNode) bool {
 	fast := head

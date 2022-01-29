@@ -1,13 +1,8 @@
 package NC2
 
-/**
-隔差逆转单链表
-*/
+import "MyNewcodeExercise/MyTools"
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+type ListNode = MyTools.ListNode
 
 /**
  *
