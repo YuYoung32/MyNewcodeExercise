@@ -64,3 +64,27 @@ func StrictCompare2DArray(a1 [][]int, a2 [][]int) bool {
 	}
 	return true
 }
+
+//CompareStringArray 比较字符串数组，忽略在二维上的顺序
+func CompareStringArray(s1 []string, s2 []string) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+	flags := make([]bool, len(s1))
+	for i := 0; i < len(flags); i++ {
+		flags[i] = false
+	}
+	for _, s := range s1 {
+		for i, cs := range s2 {
+			if flags[i] == false && s == cs {
+				flags[i] = true
+			}
+		}
+	}
+	for _, flag := range flags {
+		if flag == false {
+			return false
+		}
+	}
+	return true
+}
