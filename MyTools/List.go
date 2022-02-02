@@ -55,12 +55,44 @@ func CreateLoopList(num int, loop int) *ListNode {
 }
 
 //PrintList 打印单链表，将单链表的各节点值整合成一个切片并打印
-func PrintList(head ListNode) string {
+func PrintList(head *ListNode) string {
 	var s []int
-	start := &head
+	start := head
 	for start != nil {
 		s = append(s, start.Val)
 		start = start.Next
 	}
 	return fmt.Sprintf("%v", s)
+}
+
+//CreateListByArray 根据数组创建单链表
+func CreateListByArray(num []int) *ListNode {
+	head := &ListNode{
+		Val:  num[0],
+		Next: nil,
+	}
+	ret := head
+	for i := 1; i < len(num); i++ {
+		head.Next = &ListNode{
+			Val:  num[i],
+			Next: nil,
+		}
+		head = head.Next
+	}
+	return ret
+}
+
+//CompareList 比较两个单链表是否相同
+func CompareList(l1 *ListNode, l2 *ListNode) bool {
+	for l1 != nil && l2 != nil {
+		if l1.Val != l2.Val {
+			return false
+		}
+		l1 = l1.Next
+		l2 = l2.Next
+	}
+	if !(l1 == nil && l2 == nil) {
+		return false
+	}
+	return true
 }
