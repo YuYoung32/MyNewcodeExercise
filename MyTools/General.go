@@ -88,3 +88,16 @@ func CompareStringArray(s1 []string, s2 []string) bool {
 	}
 	return true
 }
+
+//Compare1DArray 比较一维数组是否相等
+func Compare1DArray(a1, a2 []int) bool {
+	if len(a1) != len(a2) {
+		return false
+	}
+	for i := 0; i < len(a1); i++ {
+		if a1[i] != a2[i] {
+			return false
+		}
+	}
+	return true
+}
