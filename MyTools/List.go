@@ -1,6 +1,8 @@
 package MyTools
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //ListNode 单链表节点定义
 type ListNode struct {
@@ -10,6 +12,9 @@ type ListNode struct {
 
 //CreateList 创建一个长度为num的单链表，节点值从0递增
 func CreateList(num int) *ListNode {
+	if num == 0 {
+		return nil
+	}
 	var head *ListNode
 	head = &ListNode{
 		Val:  1,
@@ -29,6 +34,9 @@ func CreateList(num int) *ListNode {
 
 //CreateLoopList 创建一个有num个节点的单链表，循环节点为第loop个
 func CreateLoopList(num int, loop int) *ListNode {
+	if num == 0 {
+		return nil
+	}
 	var head *ListNode
 	head = &ListNode{
 		Val:  1,
@@ -67,6 +75,9 @@ func PrintList(head *ListNode) string {
 
 //CreateListByArray 根据数组创建单链表
 func CreateListByArray(num []int) *ListNode {
+	if len(num) == 0 {
+		return nil
+	}
 	head := &ListNode{
 		Val:  num[0],
 		Next: nil,
