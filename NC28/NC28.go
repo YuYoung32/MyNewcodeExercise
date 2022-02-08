@@ -30,12 +30,14 @@ func minWindow(S string, T string) string {
 	for start := 0; start < len(path); start++ {
 		flags := make([]bool, len(T))
 		for i := start; i < len(path); i++ {
+			//找到匹配字符T的一个字符，1对1的关系，避免遇到含有重复字符的T时，一个字符通配所有重复字符
 			for _, pairIndex := range path[i].pair {
 				if flags[pairIndex] == false {
 					flags[pairIndex] = true
 					break
 				}
 			}
+			//全部匹配T则加入结果集
 			if check(flags) == true {
 				retStrs = append(retStrs, S[path[start].index:path[i].index+1])
 				break
