@@ -1,35 +1,34 @@
 package NC46
 
-import "sort"
+import (
+	"sort"
+)
+
+var res [][]int
+var DNum []int
 
 func combinationSum2(num []int, target int) [][]int {
 	// write code here
 	sort.Ints(num)
-	n := len(num)
-	result := [][]int{}
-	visited := make([]bool, n)
-	var tb func(temp []int, start, t int)
-	tb = func(temp []int, start, t int) {
-		if t == target {
-			tempCopy := make([]int, len(temp))
-			copy(tempCopy, temp)
-			result = append(result, tempCopy)
-			return
+	DNum = num
+	help(0, []int{}, target)
+	return res
+}
+
+func help(startIndex int, path []int, target int) {
+	if target == 0 {
+		res = append(res, path)
+		return
+	}
+	for i := startIndex; i < len(DNum); i++ {
+		if i > startIndex && DNum[i] == DNum[i-1] {
+			//确保只有第一个可以进入运算，本级后面的重复的不计入，避免重复
+			continue
 		}
-		if start >= n || t > target {
+		if DNum[i] <= target {
+			help(i+1, append(path, DNum[i]), target-DNum[i])
+		} else {
 			return
-		}
-		for i := start; i < n; i++ {
-			if i > 0 && num[i] == num[i-1] && !visited[i-1] {
-				continue
-			}
-			temp = append(temp, num[i])
-			visited[i] = true
-			tb(temp, i+1, t+num[i])
-			visited[i] = false
-			temp = temp[:len(temp)-1]
 		}
 	}
-	tb([]int{}, 0, 0)
-	return result
 }
