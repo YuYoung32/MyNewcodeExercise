@@ -12,3 +12,7 @@ func TestDP(t *testing.T) {
 	fmt.Println(packProblem01OneDi(vol, value, pack))
 	fmt.Println(packProblem01TwoDi(vol, value, pack))
 }
+
+func TestFullPack(t *testing.T) {
+	change(5, []int{1, 2, 5})
+}
