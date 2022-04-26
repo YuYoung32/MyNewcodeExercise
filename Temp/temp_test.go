@@ -1,9 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
 func TestT(t *testing.T) {
-	change(5, []int{1, 2, 5})
+	fmt.Println(longestValidParentheses("()(()"))
 }
